@@ -1,0 +1,196 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+    -webkit-user-select: none;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body, html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: #0d0e15;
+    color: #fff;
+}
+
+#game-wrapper {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+canvas {
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    background: #1a1c23;
+    box-shadow: 0 0 20px rgba(0,0,0,0.8);
+}
+
+#hud {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    right: 12px;
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.stats-card, .quest-card {
+    background: rgba(20, 24, 38, 0.85);
+    border: 2px solid #4a536b;
+    border-radius: 8px;
+    padding: 10px;
+    min-width: 220px;
+    pointer-events: auto;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.player-title, .card-title {
+    font-weight: bold;
+    color: #00e5ff;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    font-size: 13px;
+}
+
+.bar-container {
+    position: relative;
+    height: 16px;
+    background: #111;
+    border-radius: 4px;
+    margin-bottom: 4px;
+    overflow: hidden;
+    border: 1px solid #333;
+}
+
+.bar {
+    height: 100%;
+    width: 100%;
+    transition: width 0.3s ease;
+}
+
+.bar.hp { background: linear-gradient(90deg, #ff3366, #ff668c); }
+.bar.mp { background: linear-gradient(90deg, #3399ff, #66b2ff); }
+
+.bar-container span {
+    position: absolute;
+    top: 1px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 10px;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px #000;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    margin-top: 6px;
+    color: #ccc;
+}
+
+#bottom-ui {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    z-index: 10;
+}
+
+#hotbar {
+    display: flex;
+    gap: 6px;
+    background: rgba(15, 18, 28, 0.9);
+    padding: 6px;
+    border-radius: 8px;
+    border: 2px solid #5a6582;
+}
+
+.slot {
+    width: 46px;
+    height: 46px;
+    background: #252a38;
+    border: 2px solid #3d455b;
+    border-radius: 6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    position: relative;
+    cursor: pointer;
+}
+
+.slot.active { border-color: #00e5ff; box-shadow: 0 0 8px #00e5ff; }
+.slot .count { position: absolute; bottom: 2px; right: 4px; font-size: 10px; color: #fff; }
+
+#btn-craft {
+    background: #00c853;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 3px 0 #008e3a;
+}
+
+#btn-craft:active { transform: translateY(2px); box-shadow: none; }
+
+/* D-Pad para Celular e Tablet */
+#touch-controls {
+    display: none;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    justify-content: space-between;
+    align-items: flex-end;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.dpad {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    pointer-events: auto;
+}
+
+.dpad-mid { display: flex; gap: 20px; }
+
+.dpad button, #btn-action {
+    width: 50px;
+    height: 50px;
+    background: rgba(255,255,255,0.2);
+    border: 2px solid rgba(255,255,255,0.4);
+    color: white;
+    border-radius: 50%;
+    font-size: 18px;
+    pointer-events: auto;
+}
+
+#btn-action {
+    width: 70px;
+    height: 70px;
+    background: rgba(255, 51, 102, 0.6);
+    border-color: #ff3366;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    #touch-controls { display: flex; }
+    .stats-card, .quest-card { min-width: 150px; font-size: 10px; }
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>HR PRINTS 3D - MMORPG World</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-wrapper">
+        <!-- Overlay HUD -->
+        <div id="hud">
+            <div class="stats-card">
+                <div class="player-title">HERÓI HR PRINTS</div>
+                <div class="bar-container"><div id="hp-bar" class="bar hp"></div><span>HP: <i id="hp-txt">100/100</i></span></div>
+                <div class="bar-container"><div id="mp-bar" class="bar mp"></div><span>MP: <i id="mp-txt">50/50</i></span></div>
+                <div class="info-row">
+                    <span>Dia: <b id="day-txt">1</b> (<i id="time-txt">Manhã</i>)</span>
+                    <span>Bioma: <b id="biome-txt">Floresta de Polímeros</b></span>
+                </div>
+            </div>
+
+            <div class="quest-card">
+                <div class="card-title">📜 Missão Secreta</div>
+                <div id="quest-txt" class="quest-desc">Descubra a impressora ancestral no Bioma de Resina.</div>
+            </div>
+        </div>
+
+        <!-- Canvas Principal do Jogo -->
+        <canvas id="gameCanvas"></canvas>
+
+        <!-- Barra de Inventário e Crafting 3D -->
+        <div id="bottom-ui">
+            <div id="hotbar">
+                <div class="slot active" data-slot="0">🗡️<span class="count">1</span></div>
+                <div class="slot" data-slot="1">🧪<span class="count">3</span></div>
+                <div class="slot" data-slot="2">🖨️<span class="count">1</span></div>
+                <div class="slot" data-slot="3">🧵<span class="count">12</span></div>
+                <div class="slot" data-slot="4">🛡️<span class="count">1</span></div>
+            </div>
+            <button id="btn-craft" onclick="craftItem()">🖨️ Imprimir Item 3D</button>
+        </div>
+
+        <!-- Controles Virtuais Touch para Celulares/Tablets -->
+        <div id="touch-controls">
+            <div class="dpad">
+                <button id="btn-up">▲</button>
+                <div class="dpad-mid">
+                    <button id="btn-left">◀</button>
+                    <button id="btn-right">▶</button>
+                </div>
+                <button id="btn-down">▼</button>
+            </div>
+            <button id="btn-action">⚔️ ATACAR</button>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
